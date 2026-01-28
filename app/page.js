@@ -536,9 +536,8 @@ const Chatbot = () => {
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`flex ${
-                    msg.sender === "user" ? "justify-end" : "justify-start"
-                  }`}
+                  className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"
+                    }`}
                 >
                   {msg.sender === "bot" && (
                     <div className="w-6 h-6 bg-zinc-800 rounded-full flex items-center justify-center mr-2 mt-auto shrink-0 border border-white/5">
@@ -546,11 +545,10 @@ const Chatbot = () => {
                     </div>
                   )}
                   <div
-                    className={`max-w-[85%] md:max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                      msg.sender === "user"
+                    className={`max-w-[85%] md:max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${msg.sender === "user"
                         ? "bg-[#007AFF] text-white rounded-2xl rounded-br-sm"
                         : "bg-[#262629] text-gray-200 rounded-2xl rounded-bl-sm border border-white/5"
-                    }`}
+                      }`}
                   >
                     {msg.text}
                   </div>
@@ -601,9 +599,8 @@ const Chatbot = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={handleSend}
                   disabled={isTyping}
-                  className={`w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200 transition-colors shrink-0 ${
-                    isTyping ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200 transition-colors shrink-0 ${isTyping ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                 >
                   {isTyping ? (
                     <Loader2 size={16} className="animate-spin" />
@@ -674,7 +671,7 @@ const LaptopFrame = ({ videoSrc }) => {
   useEffect(() => {
     if (videoRef.current) {
       if (isPlaying && shouldLoad) {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
       } else {
         videoRef.current.pause();
       }
@@ -897,7 +894,6 @@ const SkillScrollSection = () => {
 };
 
 // --- SKILL CARD ---
-// --- FIXED & OPTIMIZED SKILL CARD ---
 const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
   const canvasRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -934,7 +930,7 @@ const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
           const img = new Image();
           const formattedIndex = i.toString().padStart(3, "0");
           img.src = `/${skill.folder}/ezgif-frame-${formattedIndex}.jpg`;
-          
+
           img.onload = () => resolve({ img, index: i - 1 }); // Store image & correct index
           img.onerror = () => resolve(null); // Agar error aaye to null bhejo
         });
@@ -950,7 +946,7 @@ const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
           if (res) {
             // Current index par image set karo
             finalImagesArray[res.index] = res.img;
-            
+
             // MAGIC: Agla frame jo humne download nahi kiya, wahan bhi yehi image chipka do
             // Isse array complete ho jayega aur blank screen nahi aayegi
             if (res.index + 1 < skill.frames) {
@@ -961,9 +957,9 @@ const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
 
         // 5. Final check: Agar koi gap reh gaya ho to pichli image se bhar do
         for (let i = 1; i < finalImagesArray.length; i++) {
-            if (!finalImagesArray[i] && finalImagesArray[i-1]) {
-                finalImagesArray[i] = finalImagesArray[i-1];
-            }
+          if (!finalImagesArray[i] && finalImagesArray[i - 1]) {
+            finalImagesArray[i] = finalImagesArray[i - 1];
+          }
         }
 
         imagesRef.current = finalImagesArray;
@@ -1011,7 +1007,7 @@ const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
   useEffect(() => {
     const unsubscribe = currentFrame.on("change", (latest) => {
       if (!isLoaded) return;
-      
+
       const frameIndex = Math.floor(latest);
       // Safe Index ensure karein (Array se bahar na jaye)
       const safeIndex = Math.max(0, Math.min(skill.frames - 1, frameIndex));
@@ -1044,8 +1040,8 @@ const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
   }, [isLoaded]);
 
   return (
-    <div 
-      ref={cardRef} 
+    <div
+      ref={cardRef}
       className="relative shrink-0 w-[70vw] sm:w-[450px] md:w-[500px] lg:w-[550px] xl:w-[600px] h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[55vh] xl:h-[60vh] bg-[#0d0d0d] rounded-[1.5rem] md:rounded-[2rem] border border-white/10 overflow-hidden flex flex-col shadow-2xl group hover:border-white/30 transition-colors duration-500"
     >
       <div className="p-5 md:p-8 flex justify-between items-start z-20">
@@ -1071,8 +1067,8 @@ const SkillCard = memo(({ skill, globalProgress, index, totalSkills }) => {
 
         {!isLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">
-             {/* Loader tabhi dikhega jab user card tak scroll karega */}
-             {isInView && <Loader2 className="w-8 h-8 text-white/20 animate-spin" />}
+            {/* Loader tabhi dikhega jab user card tak scroll karega */}
+            {isInView && <Loader2 className="w-8 h-8 text-white/20 animate-spin" />}
           </div>
         )}
 
@@ -1334,17 +1330,15 @@ const LoopSection = () => {
 const Home = () => {
   const [loading, setLoading] = useState(true);
 
-  // 🔊 GLOBAL CLICK SOUND LOGIC
   useEffect(() => {
-    // Check if window is defined (Server Side Rendering safety)
     if (typeof window !== "undefined") {
       const clickSound = new Audio("/sound/click.mp3");
-      clickSound.preload = "auto"; 
+      clickSound.preload = "auto";
 
       const handleGlobalClick = () => {
         const soundClone = clickSound.cloneNode();
-        soundClone.volume = 0.3; 
-        soundClone.play().catch(() => {});
+        soundClone.volume = 0.3;
+        soundClone.play().catch(() => { });
       };
 
       window.addEventListener("click", handleGlobalClick);
@@ -1355,32 +1349,57 @@ const Home = () => {
 
   return (
     <ReactLenis root>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Faiz Siddiqui",
+            "url": "https://faizsiddiqui.netlify.app", 
+            "sameAs": [
+              "https://github.com/faizsiddiqui07",
+            ],
+            "jobTitle": "Software Engineer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Architectus Bureau"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Lucknow",
+              "addressRegion": "UP",
+              "addressCountry": "India"
+            }
+          }),
+        }}
+      />
       <div className="relative min-h-screen text-white font-sans selection:bg-white selection:text-black">
         <Background />
         <AnimatePresence mode="wait">
-        {loading && <Preloader setLoading={setLoading} />}
-      </AnimatePresence>
+          {loading && <Preloader setLoading={setLoading} />}
+        </AnimatePresence>
 
-      <CustomCursor />
-      <Navbar />
-      <Chatbot />
+        <CustomCursor />
+        <Navbar />
+        <Chatbot />
 
-      <div className="relative w-full">
-        <Hero />
-        <MarqueeText />
-        <Work />
-        <About />
-        <SkillScrollSection />
-        <LoopSection />
-      </div>
+        <div className="relative w-full">
+          <Hero />
+          <MarqueeText />
+          <Work />
+          <About />
+          <SkillScrollSection />
+          <LoopSection />
+        </div>
 
-      {/* Noise Texture Overlay */}
-      <div
-        className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
+        {/* Noise Texture Overlay */}
+        <div
+          className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] mix-blend-overlay"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
       </div>
     </ReactLenis>
   );
