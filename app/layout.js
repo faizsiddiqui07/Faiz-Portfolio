@@ -26,6 +26,9 @@ export const metadata = {
     "Software Engineer India",
     "Web Developer Portfolio",
   ],
+  verification: {
+    google: "qgdgC_GOTrDY-mZtYqGV3EMUkb7cvDwdbf_IlmfKq",
+  },
   authors: [{ name: "Faiz Siddiqui" }],
   creator: "Faiz Siddiqui",
   openGraph: {

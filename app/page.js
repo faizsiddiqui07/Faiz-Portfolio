@@ -546,8 +546,8 @@ const Chatbot = () => {
                   )}
                   <div
                     className={`max-w-[85%] md:max-w-[80%] px-4 py-3 text-sm leading-relaxed shadow-sm ${msg.sender === "user"
-                        ? "bg-[#007AFF] text-white rounded-2xl rounded-br-sm"
-                        : "bg-[#262629] text-gray-200 rounded-2xl rounded-bl-sm border border-white/5"
+                      ? "bg-[#007AFF] text-white rounded-2xl rounded-br-sm"
+                      : "bg-[#262629] text-gray-200 rounded-2xl rounded-bl-sm border border-white/5"
                       }`}
                   >
                     {msg.text}
@@ -1356,7 +1356,7 @@ const Home = () => {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Faiz Siddiqui",
-            "url": "https://faizsiddiqui.netlify.app", 
+            "url": "https://faizsiddiqui.netlify.app",
             "sameAs": [
               "https://github.com/faizsiddiqui07",
             ],
