@@ -27,7 +27,7 @@ export const metadata = {
     "Web Developer Portfolio",
   ],
   verification: {
-    google: "qgdgC_GOTrDY-mZtYqGV3EMUkb7cvDwdbf_IlmfKq",
+    google: "-vbavAPpglVXbiAirW7hZSPtbEXzxKMFyHnfzLgRbXM",
   },
   authors: [{ name: "Faiz Siddiqui" }],
   creator: "Faiz Siddiqui",
